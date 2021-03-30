@@ -1,4 +1,4 @@
-import sys
+#Morse to English 
 
 def enterInput():
   print("Enter morse code")
@@ -11,18 +11,6 @@ def validateInput(morseCode):
   else:
     print("An exception occurred!")
     enterInput()
-
-def moreCode():
-  print("Would you like to convert more morse code?")
-  answer = input()
-  if (answer == "yes"):
-    conversionOption()
-  elif (answer == "no"):
-    print("Thank you and goodbye")
-    sys.exit("End")
-  else:
-    print("Error")
-    moreCode()
 
 def morse_case(value):
   try:
@@ -70,17 +58,16 @@ def morse_case(value):
     print("An exception occurred!")
     enterInput()
 
-####################
+#English to Morse
 
 def enterInput2():
   print("Enter a letter or number")
   English = input()
   validateInput2(English)
-  english_case(English)
 
 def validateInput2(English):
   if(English.isalpha):
-    english_case(English)
+    english_case(English.upper())
   else:
     print("An exception occurred!")
     enterInput2()
@@ -131,15 +118,30 @@ def english_case(value2):
     print("An exception occurred!")
     enterInput2()
 
+#Menu Functionality
+
+def moreCode():
+  print("Would you like to convert more morse code?")
+  answer = input()
+  if (answer.lower() == "yes" or answer.lower() == "y"):
+    conversionOption()
+  elif (answer.lower() == "no" or answer.lower() == "n"):
+    print("Thank you and goodbye")
+  else:
+    print("Error")
+    moreCode()
+
 def conversionOption():
   print("Would you like to convert Morse to English (MTE) or English to Morse (ETM)?")
   answer = input()
-  if(answer == "MTE"):
+  if(answer.upper() == "MTE"):
     enterInput()
-  if (answer == "ETM"):
+  elif (answer.upper() == "ETM"):
     enterInput2()
   else:
     print("Error")
     conversionOption()
+
+#Start Program
 
 conversionOption()
